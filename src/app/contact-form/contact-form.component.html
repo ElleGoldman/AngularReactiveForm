@@ -10,3 +10,7 @@
 
     <button type="submit" [disabled]="!contactForm.valid">Submit</button>
 </form>
+
+<p class="error-message" *ngIf="name.errors && name.errors['nameInvalid']">
+    Name should start with capital letter
+</p>
