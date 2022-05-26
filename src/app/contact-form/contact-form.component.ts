@@ -12,7 +12,7 @@ export class ContactFormComponent implements OnInit {
   @Output() contactAdded: EventEmitter<Contact> = new EventEmitter();
 
   contactForm = this.formBuilder.group({
-    name: ['',  [Validators.required, ValidatePhone()]],
+    name: ['',  [Validators.required, ValidateName()]],
     age: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
   });
@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
   }
 }
 
-function ValidatePhone(): ValidatorFn  {
+function ValidateName(): ValidatorFn  {
   return (control:AbstractControl) : ValidationErrors | null => {
     if (control.value && control.value[0].toUpperCase() !== control.value[0]) {
       return { 'nameInvalid': true };
